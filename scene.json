@@ -1,0 +1,61 @@
+{
+  "ecs7": true,
+  "runtimeVersion": "7",
+  "display": {
+    "title": "Discotheque",
+    "description": "Arrows come towards you and you press buttons in time with the music.",
+    "favicon": "favicon_asset",
+    "navmapThumbnail": "assets/scene/thumbnail.png"
+  },
+  "owner": "",
+  "contact": {
+    "name": "Ansis",
+    "email": "ansis.malins@decentraland.org"
+  },
+  "main": "bin/index.js",
+  "tags": [],
+  "scene": {
+    "parcels": [
+      "0,0"
+    ],
+    "base": "0,0"
+  },
+  "spawnPoints": [
+    {
+      "name": "Spawn Point 1",
+      "default": true,
+      "position": {
+        "x": [
+          8,
+          8
+        ],
+        "y": [
+          0,
+          0
+        ],
+        "z": [
+          8,
+          8
+        ]
+      },
+      "cameraTarget": {
+        "x": 8,
+        "y": 0,
+        "z": 16
+      }
+    }
+  ],
+  "requiredPermissions": [
+    "ALLOW_TO_TRIGGER_AVATAR_EMOTE",
+    "ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE"
+  ],
+  "featureToggles": {
+    "voiceChat": "enabled",
+    "portableExperiences": "enabled"
+  },
+  "rating": "T",
+  "source": {
+    "origin": "creator-hub",
+    "projectId": "44a8d342-4940-4b42-8234-823e1e414e53"
+  }
+}
