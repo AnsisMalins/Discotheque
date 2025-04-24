@@ -1,5 +1,5 @@
 import { Color4 } from '@dcl/sdk/math'
-import { engine, Entity, InputAction, Material, pointerEventsSystem } from '@dcl/sdk/ecs'
+import { engine, Entity, InputAction, InputModifier, Material, PBInputModifier, pointerEventsSystem } from '@dcl/sdk/ecs'
 
 export function main() {
     const arrowNames = ["Left", "Down", "Up", "Right"] as const;
@@ -45,8 +45,35 @@ export function main() {
         }
     }
 
+    const moveEnabled = InputModifier.Mode.Standard({
+        disableWalk: false,
+        disableRun: false,
+        disableJog: false,
+        disableJump: false
+    })
+
+    const moveDisabled = InputModifier.Mode.Standard({
+        disableWalk: true,
+        disableRun: true,
+        disableJog: true,
+        disableJump: true
+    })
+
+    InputModifier.create(engine.PlayerEntity, {
+        mode : moveEnabled
+    })
+
     pointerEventsSystem.onPointerDown(pointerData, cmd => {
         switch (cmd.button) {
+            case InputAction.IA_PRIMARY:
+                const inputModifier = InputModifier.getMutable(engine.PlayerEntity)
+
+                if (inputModifier.mode == moveEnabled)
+                    inputModifier.mode = moveDisabled
+                else
+                    inputModifier.mode = moveEnabled
+
+                break
             case InputAction.IA_LEFT:
                 Material.setPbrMaterial(arrows.Left, downMaterial)
                 break
